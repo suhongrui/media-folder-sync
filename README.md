@@ -1,13 +1,12 @@
-The MFS - Media Folder Sync GitHub page
+该MFS - 媒体文件夹同步GitHub的页面
 =======================================
 
-For improved html5 support, most servers needs to keep 2 or more copys of your media file in different formats. This script monitors a specific folder, using Linux Inotify for changes, and uses ffmpeg to convert your video/audio for all formats wanted.
-<br/>
-This version here keeps an ogg and mp3 version for all submited audios (in ogg or mp3 format).
-To modify or improve this, edit settings.py and update the filetypes list.
-Each dictionay inside filetypes list mean a group of media elements with it's ffmpeg codec.
-Lets say that you need to have, for audio, formats mp3 and ogg and for video webm and mp4. You will do something like that:
-
+对于改善HTML5的支持，大多数服务器需要保持2个或更多copys媒体文件在不同的格式。该脚本监视特定的文件夹，使用Linux的inotify的变化，并使用FFMPEG转换视频/音频格式的所有希望。
+<BR/>
+这个版本在这里保留所有submited音频的OGG和MP3版（OGG或MP3格式）。
+要修改或改善这一点，编辑settings.py和更新文件类型列表。
+里面的文件类型列表中的每个百科指的是一群媒体元素与它的ffmpeg的编解码器。
+比方说，你需要有，用于音频，格式MP3和OGG以及视频WEBM和MP4。你会做这样的
 ```
 filetypes = [
     {
@@ -20,17 +19,18 @@ filetypes = [
     },
 ]
 ```
-to use it, you just need to call the script and after the folder you want to monitor. This script will monitor all folder recursively, but WILL NOT follow symlinks.
+使用它，你只需要调用脚本并要监视的文件夹后。这个脚本会监视所有文件夹递归，但不会跟随符号连接。
 ```
 ./media_folder_sync.py /var/www/media
 ```
 
-To use in production, a tool like <a href="http://supervisord.org/">Supervisor</a> is highly recommended.
+要在生产中使用，一个类似的工具 <a href="http://supervisord.org/">Supervisor</a> is highly recommended.
 
-Tips with FFMPEG
+提示与FFMPEG
 ----------------
-ffmpeg is an awesome tool for video/audio converting, but it's also commonly distributed without all his capabilities, mostly because of legal reasons in USA and some other countries.
-To know which containers your instalation of ffmpeg supports, type this:
+FFmpeg是一个真棒工具，视频/音频转换，但它也通常分布，主要是因为在美国和法律上的原因的一些其他国家没有他的全部能力。
+要知道你的容器支持的ffmpeg的安装目录，输入：
+
 ```
 ffmpeg -format
 ```
